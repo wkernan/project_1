@@ -9,16 +9,21 @@ describe "StaticPages" do
 			expect(page).to have_content('Tinder Stories')
 		end
 
-		it "should have title 'Home'" do
+		it "should have the base title" do
 			visit '/static_pages/home'
-			expect(page).to have_title("Tinder Stories | Home")
+			expect(page).to have_title("Tinder Stories")
+		end
+
+		it "should not have a custom page title" do
+			visit '/static_pages/home'
+			expect(page).not_to have_title('| Home')
 		end
 	end
 
 	describe "Contact page" do
 
 		it "should have the content 'Contact'" do
-			visit '/static_pages/help'
+			visit '/static_pages/contact'
 			expect(page).to have_content('Contact')
 		end
 
@@ -30,9 +35,9 @@ describe "StaticPages" do
 
 	describe "About page" do
 
-		it "should have the content 'About Us'" do
+		it "should have the content 'About Tinder Stories'" do
 			visit '/static_pages/about'
-			expect(page).to have_content('About Us')
+			expect(page).to have_content('About Tinder Stories')
 		end
 
 		it "should have title 'About'" do
