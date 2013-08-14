@@ -1,48 +1,28 @@
 require 'spec_helper'
 
 describe "StaticPages" do
+	subject { page }
 
 	describe "Home page" do
+		
+		before { visit root_path }
 
-		it "should have the content 'Tinder Stories'" do
-			visit '/static_pages/home'
-			expect(page).to have_content('Tinder Stories')
-		end
-
-		it "should have the base title" do
-			visit '/static_pages/home'
-			expect(page).to have_title("Tinder Stories")
-		end
-
-		it "should not have a custom page title" do
-			visit '/static_pages/home'
-			expect(page).not_to have_title('| Home')
-		end
+		it { should have_content('Tinder Stories') }
+		it { should have_title("Tinder Stories") }
+		it { should_not have_title('| Home') }
 	end
 
 	describe "Contact page" do
+		before { visit contact_path }
 
-		it "should have the content 'Contact'" do
-			visit '/static_pages/contact'
-			expect(page).to have_content('Contact')
-		end
-
-		it "should have title 'Contact'" do
-			visit '/static_pages/contact'
-			expect(page).to have_title("Tinder Stories | Contact")
-		end
+		it { should have_content('Contact') }
+		it { should have_title("Tinder Stories | Contact") }
 	end
 
 	describe "About page" do
+		before { visit about_path }
 
-		it "should have the content 'About Tinder Stories'" do
-			visit '/static_pages/about'
-			expect(page).to have_content('About Tinder Stories')
-		end
-
-		it "should have title 'About'" do
-			visit '/static_pages/about'
-			expect(page).to have_title("Tinder Stories | About Us")
-		end
+		it { should have_content('About Tinder Stories') }
+		it { should have_title("Tinder Stories | About Us") }
 	end
 end
